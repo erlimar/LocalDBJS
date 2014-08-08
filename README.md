@@ -35,7 +35,7 @@ Com ela você tem a segurança de usar o mecanismo mesmo se o browser não tiver
 ## Incluindo a biblioteca em seus projetos
 
 ```html
-<script src="localdb.js">
+<script src="localdb.js"></script>
 ```
 
 ## Salvando um objeto
