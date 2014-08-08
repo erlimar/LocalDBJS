@@ -95,7 +95,11 @@
         // Uma última alternativa é tentar obter o valor do banco local, se
         // existir o recurso.
         try {
-            return localDB.getItem(key);
+            var result = localDB.getItem(key);
+            if (result != null) {
+                result = restoreObject(result);
+            }
+            return result;
         } catch (noError) {
             // Sem sinalização de erros
             return null;
