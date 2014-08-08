@@ -34,27 +34,27 @@ Com ela você tem a segurança de usar o mecanismo mesmo se o browser não tiver
 
 ## Incluindo a biblioteca em seus projetos
 
-    ```html
-    <script src="https://raw.githubusercontent.com/erlimar/LocalDBJS/master/src/localdb.js">
-    ```
+```html
+<script src="https://raw.githubusercontent.com/erlimar/LocalDBJS/master/src/localdb.js">
+```
 
 ## Salvando um objeto
 
-    ```javascript
-    localDB.save('Key', { my: object });
-    ```
+```javascript
+localDB.save('Key', { my: object });
+```
     
 ## Recuperando o objeto
 
-    ```javascript
-    localDB.read('Key');
-    ```
+```javascript
+localDB.read('Key');
+```
 
 ## Removendo o objeto
 
-    ```javascript
-    localDB.remove('Key');
-    ```
+```javascript
+localDB.remove('Key');
+```
 
 ## Persistência
 
@@ -62,12 +62,12 @@ Por padrão (quando há suporte pelo Browser) os dados são salvos na sessão. I
 
 Mas você pode informar que deseja persistir os dados além da sessão atual. Para isso basta:
 
-    ```javascript
-    localDB.persistData(true);
-    ```
+```javascript
+localDB.persistData(true);
+```
     
 E você pode retornar a qualquer momento:
 
-    ```javascript
-    localDB.persistData(false);
-    ```
+```javascript
+localDB.persistData(false);
+```
