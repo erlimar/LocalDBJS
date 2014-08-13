@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>E5R.LocalDB.js.AspNet</id>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <title>LocalDB.js for ASP.NET</title>
     <summary>LocalDB.js específico para projetos ASP.NET</summary>
     <authors>Erlimar Silva Campos (erlimar@gmail.com)</authors>
@@ -17,7 +17,7 @@
     <tags>javascript database db js spa</tags>
   </metadata>
   <files>
-    <file src="src/localdb.js" target="content/Content/js/localdb.js" />
-    <file src="dist/localdb.min.js" target="content/Content/js/localdb.min.js" />
+    <file src="src/localdb.js" target="content/Scripts/localdb.js" />
+    <file src="dist/localdb.min.js" target="content/Scripts/localdb.min.js" />
   </files>
 </package>

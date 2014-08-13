@@ -110,7 +110,7 @@
     // Atribui um valor no banco de dados. Se já existir, substitui. Se não
     // existir, cria um novo.
     // </summary>
-    var setValue = function (key, value) {
+    var setValue = function (key, value, options) {
         var index = indexKey(key);
         var record = { key: key };
         if (0 > index) {
@@ -118,7 +118,7 @@
         } else {
             record = db[index];
         }
-        record.value = copyObject(value);
+        record.value = copyObject(value, options);
         // Tentamos salvar os dados no banco local, se existir o recurso
         try {
             localDB.setItem(record.key, record.value);
@@ -157,9 +157,15 @@
     //       uma vez o mesmo SALVO, pode ser modificado sem refletir no estado
     //       salvo anteriormente.
     // </summary>
-    var copyObject = function (object) {
+    var copyObject = function (object, options) {
         var newObject = {};
+        var exclude = options && Array.isArray(options['exclude'])
+            ? options['exclude']
+            : [];
         for (var prop in object) {
+            if(exclude.indexOf(prop) >= 0){
+                continue;
+            }
             var propName = '__' + prop + '__';
             var propValue = object[prop];
             newObject[propName] = propValue;
