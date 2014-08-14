@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>LocalDB.js by erlimar</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>LocalDB.js</h1>
+        <p>Biblioteca JavaScript simples para armazenamento de dados locais.</p>
+        <p class="view"><a href="https://github.com/erlimar/LocalDBJS">View the Project on GitHub <small>erlimar/LocalDBJS</small></a></p>
+        <ul>
+          <li><a href="https://github.com/erlimar/LocalDBJS/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/erlimar/LocalDBJS/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/erlimar/LocalDBJS">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Biblioteca JavaScript simples para armazenamento de dados locais.</p>
+
+<h2>
+<a name="license-mit" class="anchor" href="#license-mit"><span class="octicon octicon-link"></span></a>License: MIT</h2>
+
+<pre><code>Copyright (C) 2014 Erlimar Silva Campos (erlimar@gmail.com)
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+</code></pre>
+
+<p>Uma forma simples para implementar localStorage em suas aplicações <a href="http://en.wikipedia.org/wiki/Single-page_application">SPA</a> (Single Page Application).</p>
+
+<p>Com ela você tem a segurança de usar o mecanismo mesmo se o browser não tiver suporte. Nesse caso os dados são mantidos em memória.</p>
+
+<p><strong>NOTA:</strong> Nesse caso um F5 (Refresh) faz com que os dados sejam perdidos. <em>Mas e daí? É uma SPA mesmo!</em></p>
+
+<h2>
+<a name="incluindo-a-biblioteca-em-seus-projetos" class="anchor" href="#incluindo-a-biblioteca-em-seus-projetos"><span class="octicon octicon-link"></span></a>Incluindo a biblioteca em seus projetos</h2>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"localdb.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<h2>
+<a name="salvando-um-objeto" class="anchor" href="#salvando-um-objeto"><span class="octicon octicon-link"></span></a>Salvando um objeto</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">localDB</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s1">'Key'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">my</span><span class="o">:</span> <span class="nx">object</span> <span class="p">});</span>
+</pre></div>
+
+<p>Caso você queira desconsiderar algumas propriedades do objeto ao salvar:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">localDB</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="s1">'Key'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">pub</span><span class="o">:</span> <span class="s1">'value'</span><span class="p">,</span> <span class="nx">priv</span><span class="o">:</span> <span class="s1">'value private'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">exclude</span><span class="o">:</span> <span class="p">[</span><span class="s1">'priv'</span><span class="p">]</span> <span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="recuperando-o-objeto" class="anchor" href="#recuperando-o-objeto"><span class="octicon octicon-link"></span></a>Recuperando o objeto</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">localDB</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="s1">'Key'</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="removendo-o-objeto" class="anchor" href="#removendo-o-objeto"><span class="octicon octicon-link"></span></a>Removendo o objeto</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">localDB</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'Key'</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="persist%C3%AAncia" class="anchor" href="#persist%C3%AAncia"><span class="octicon octicon-link"></span></a>Persistência</h2>
+
+<p>Por padrão (quando há suporte pelo Browser) os dados são salvos na sessão. Isso que dizer que quando você fechar a página (ou a aba) e voltar novamente, já era, os dados são perdidos.</p>
+
+<p>Mas você pode informar que deseja persistir os dados além da sessão atual. Para isso basta:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">localDB</span><span class="p">.</span><span class="nx">persistData</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</pre></div>
+
+<p>E você pode retornar a qualquer momento:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">localDB</span><span class="p">.</span><span class="nx">persistData</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</pre></div>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/erlimar">erlimar</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
